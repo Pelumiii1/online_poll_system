@@ -28,11 +28,8 @@ SECRET_KEY = 'django-insecure-&e^16f#l0s32x(&2=@o3=igfvay_1dky1&12ml7yhx4y!nd^f%
 # Set DEBUG based on environment
 DEBUG = os.environ.get('RENDER', '') != 'true'
 
-# Configure allowed hosts based on environment
-if os.environ.get('RENDER', '') == 'true':
-    ALLOWED_HOSTS = ['https://online-poll-system-lsrk.onrender.com', '.onrender.com']
-else:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+ALLOWED_HOSTS = ['https://online-poll-system-lsrk.onrender.com', '.onrender.com','localhost', '127.0.0.1']
 
 
 # Application definition
