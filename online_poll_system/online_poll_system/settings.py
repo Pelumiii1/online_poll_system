@@ -88,17 +88,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'online_poll_system.wsgi.application'
 
 
-
+import dj_database_url
 
 DATABASES = {
-    'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config("DB_NAME"),
-            'USER': config("DB_USER"),
-            'PASSWORD': config("DB_PASSWORD"),
-            'HOST': config('DB_HOST', default='db'),  
-            'PORT': config('DB_PORT', default=5432, cast=int),
-        }
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL")
+    )
 }
 
 
