@@ -22,4 +22,4 @@ RUN python manage.py collectstatic --noinput || true
 EXPOSE 8000
 
 # Run migrations, then start Gunicorn
-CMD ["bash", "-c", "python manage.py migrate && gunicorn simple_auth.wsgi:application --bind 0.0.0.0:8000"]
+CMD ["bash", "-c", "python manage.py migrate && gunicorn online_poll_system.wsgi:application --bind 0.0.0.0:8000"]
