@@ -4,8 +4,19 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+from  drf_spectacular.utils import extend_schema
 
 class RegisterView(APIView):
+    # serializer_class = RegisterSerializer
+    @extend_schema(
+        request=RegisterSerializer,
+        responses={
+            201: RegisterSerializer
+        },
+        summary="Register a new user",
+        description="Register a new user"
+    )
+    
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         
@@ -24,6 +35,14 @@ class RegisterView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST )
     
 class LoginView(APIView):
+    @extend_schema(
+        request=LoginSerializer,
+        responses={
+            200: LoginSerializer
+        },
+        summary="Login a user",
+        description="Login a user"
+    )
     def post(self,request):
         serializer = LoginSerializer(data=request.data)
         
