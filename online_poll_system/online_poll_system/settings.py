@@ -24,9 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&e^16f#l0s32x(&2=@o3=igfvay_1dky1&12ml7yhx4y!nd^f%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Set DEBUG based on environment
+DEBUG = os.environ.get('RENDER', '') != 'true'
 
-ALLOWED_HOSTS = []
+# Configure allowed hosts based on environment
+if os.environ.get('RENDER', '') == 'true':
+    ALLOWED_HOSTS = ['online-poll-system-lsrk.onrender.com', '.onrender.com']
+else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
