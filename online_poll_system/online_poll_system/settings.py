@@ -30,7 +30,7 @@ DEBUG = os.environ.get('RENDER', '') != 'true'
 
 # Configure allowed hosts based on environment
 if os.environ.get('RENDER', '') == 'true':
-    ALLOWED_HOSTS = ['online-poll-system-lsrk.onrender.com', '.onrender.com']
+    ALLOWED_HOSTS = ['https://online-poll-system-lsrk.onrender.com', '.onrender.com']
 else:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
