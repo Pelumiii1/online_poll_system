@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     
     # apps 
     'accounts',
+    "poll"
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -116,6 +117,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "OPTIONS": {
+            "min_length": 8
+        },
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -161,8 +165,8 @@ if not DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-SEPECTACULAR_SETTINGS = {
-    "TITLE": "Online Poll System",
-    "DESCRIPTION": "Online Poll System",
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Online Poll System API",
+    "DESCRIPTION": "API for Online Poll System",
     "VERSION": "1.0.0",
 }
