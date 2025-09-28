@@ -26,6 +26,7 @@ class UserPollListView(generics.ListAPIView):
     
 class PollDeleteView(generics.DestroyAPIView):
     queryset = Poll.objects.all()
+    serializer_class = PollSerializer
     permission_classes = [IsOwnerOrReadOnly]
     
     def perform_destroy(self, instance):
