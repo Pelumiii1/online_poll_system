@@ -48,7 +48,7 @@ class Vote(models.Model):
     voted_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        unique_together = ('user', 'poll')
+        unique_together = ('user', 'poll')  # prevents double-voting per poll per user
         
     def __str__(self):
         return f"{self.user.email} - {self.poll.question[:30]} - {self.option.text[:20]}"

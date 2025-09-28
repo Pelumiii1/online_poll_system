@@ -53,7 +53,7 @@ class OptionSerializer(serializers.ModelSerializer):
 )
         
 class PollSerializer(serializers.ModelSerializer):
-    options = OptionSerializer(many=True, read_only=True)
+    options = OptionSerializer(many=True, required=False)
     created_by = serializers.ReadOnlyField(source='created_by.email')
     is_expired = serializers.ReadOnlyField()
     

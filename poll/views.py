@@ -15,7 +15,7 @@ class PollListCreateView(generics.ListCreateAPIView):
         return Poll.objects.filter(is_active=True).select_related('created_by')
     
     def perform_create(self, serializer):
-        serializer.save(create_by=self.request.user)
+        serializer.save(created_by=self.request.user)
         
 class UserPollListView(generics.ListAPIView):
     serializer_class = PollSerializer
@@ -60,7 +60,8 @@ def toogle_poll_visibility(request,pk):
             {"error":"You do not have permission to modify this poll."},
             status=status.HTTP_403_FORBIDDEN
         )
-    poll.result_visibility == 'private' if poll.result_visibility == 'public' else 'public'
+    print(poll.result_visibility)
+    poll.result_visibility = 'private' if poll.result_visibility == 'public' else 'public'
     poll.save()
     return Response({"result_visibility":poll.result_visibility}, status=status.HTTP_200_OK)
 
