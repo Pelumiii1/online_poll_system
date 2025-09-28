@@ -81,7 +81,7 @@ class PollSerializer(serializers.ModelSerializer):
         options_data = validated_data.pop("options")
         poll = Poll.objects.create(**validated_data)
         
-        if poll.poll_type == ' tf':
+        if poll.poll_type == 'tf':
             Option.objects.create(poll=poll, text="True")
             Option.objects.create(poll=poll, text="False")
             
